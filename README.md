@@ -1,138 +1,39 @@
-# Stock Price Prediction using Machine Learning
+# Stock Price Prediction Using Machine Learning and Deep Learning
 
-This project implements a stock price prediction system using both traditional machine learning and deep learning models. It uses historical stock market data along with technical indicators to predict future stock prices.
-
-The models implemented are:
-- Random Forest Regressor
-- LSTM (Long Short-Term Memory) Neural Network
-
-The project fetches stock data dynamically using Yahoo Finance.
-
----
-
-## Features
-
-- Fetches historical stock data using yfinance
-- Computes common technical indicators:
-  - Simple Moving Average (SMA)
-  - Exponential Moving Average (EMA)
-  - Volatility
-  - RSI (Relative Strength Index)
-  - MACD
-- Data scaling using MinMaxScaler
-- Time-series aware train-test split
-- Random Forest regression model
-- LSTM deep learning model using TensorFlow/Keras
-- Evaluation using RMSE and MAPE
-- Visualization of predicted vs actual stock prices
-
----
-
-## Tech Stack
-
-- Python
-- NumPy
-- Pandas
-- Matplotlib
-- scikit-learn
-- TensorFlow / Keras
-- yfinance
-
----
-
-## Project Structure
-
-.
-├── main.py
-├── README.md
-└── requirements.txt
-
----
-
-## Installation
-
-1. Clone the repository
-
-   git clone https://github.com/Pranav-Kumar14/stock-price-prediction.git
-   cd stock-price-prediction
-
-2. Install dependencies
-
-   pip install -r requirements.txt
-
----
-
-## requirements.txt
-
-numpy  
-pandas  
-matplotlib  
-yfinance  
-scikit-learn  
-tensorflow  
-
----
-
-## Usage
-
-Run the script:
-
-   python main.py
-
-You will be prompted to enter a stock ticker symbol.
-
-Example:
-
-   Enter stock ticker symbol (e.g., AAPL, TSLA): AAPL
-
-The script will:
-- Download historical data
-- Train Random Forest and LSTM models
-- Evaluate both models
-- Plot actual vs predicted prices
-
----
+## Overview
+This project implements a stock price prediction system using historical market data and technical indicators. It combines traditional machine learning and deep learning approaches to compare performance and behavior on time-series financial data. Stock data is fetched dynamically using Yahoo Finance and processed to extract meaningful indicators before training the models.
 
 ## Models Used
+- **Random Forest Regressor**
+  - Ensemble-based machine learning model
+  - Captures non-linear relationships between technical indicators and stock prices
 
-### Random Forest Regressor
-- Ensemble-based regression model
-- Good baseline for tabular financial features
-- Uses 200 estimators with controlled depth
+- **LSTM (Long Short-Term Memory) Network**
+  - Deep learning model designed for sequential data
+  - Learns temporal dependencies in financial time series
 
-### LSTM Neural Network
-- Designed for sequential/time-series data
-- Two LSTM layers with dropout and batch normalization
-- Optimized using Adam optimizer
+## Feature Engineering
+The following technical indicators are computed from closing prices:
+- Simple Moving Average (SMA 10, SMA 50)
+- Exponential Moving Average (EMA 10, EMA 50)
+- Volatility (rolling standard deviation)
+- Relative Strength Index (RSI)
+- Moving Average Convergence Divergence (MACD)
 
----
+## Data Processing
+- Historical stock prices are scaled using Min-Max normalization
+- Data is split chronologically to preserve time-series order
+- Target variable is the closing price
 
 ## Evaluation Metrics
+Model performance is evaluated using:
+- Root Mean Squared Error (RMSE)
+- Mean Absolute Percentage Error (MAPE)
 
-- RMSE (Root Mean Squared Error)
-- MAPE (Mean Absolute Percentage Error)
+## Output
+- Numerical evaluation metrics printed to console
+- Line plots comparing actual vs predicted stock prices
+- Separate visualizations for Random Forest and LSTM predictions
 
-These metrics are printed for each model during execution.
-
----
-
-## Notes
-
-- Data is split chronologically (no shuffling)
-- LSTM input is reshaped to 3D format
-- Predictions are inverse-transformed to original price scale
-- This project is intended for academic and learning purposes
-
----
-
-## Disclaimer
-
-This project is not financial advice.  
-Stock market predictions are inherently uncertain.
-
----
-
-## Author
-
-Pranav Kumar 
-
+## Use Case
+This project is suitable for academic learning, experimentation with financial time series, and comparison of machine learning vs deep learning approaches for stock price prediction.
